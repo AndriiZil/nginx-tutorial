@@ -12,8 +12,20 @@
   
   docker exec -it my-nginx /bin/bash
 ```
-- Configuration file `/etc/nginx/nginx.conf`
-### Copy conf file
+- Configuration file `/etc/nginx/conf.d/default.conf`
+- Bu default
 ```bash
-  docker cp ./some_file CONTAINER:/work
+  docker cp ./index.html my-nginx:/usr/share/nginx/html
+```
+
+### Copy conf file (from specific folder)
+- Previously create website folder inside of docker NGINX container
+```bash
+  docker cp ./default.conf my-nginx:/etc/nginx/conf.d/default.conf
+  
+  docker cp ./index.html my-nginx:/usr/share/nginx/website
+```
+### Restart NGINX container
+```bash
+  docker restart my-nginx
 ```
